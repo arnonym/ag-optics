@@ -44,14 +44,14 @@ const examplePerson: Person = {
   tags: ['developer', 'typescript', 'remote'],
 };
 
-const cityLens = pipe(L.id<Person>(), L.prop('address'), L.prop('city')).get(
-  examplePerson,
-);
+const cityLens = pipe(L.id<Person>(), L.prop('address'), L.prop('city'));
+cityLens.get(examplePerson);
 // Somewhere
 
 const companyLens = pipe(L.id<Person>(), L.prop('company'));
 
-const companyPhoneLens = pipe(companyLens, O.prop('phone')).get(examplePerson);
+const companyPhoneLens = pipe(companyLens, O.prop('phone'));
+companyPhoneLens.get(examplePerson);
 // 987-654-3210
 
 const updatedExamplePerson = pipe(
@@ -60,7 +60,6 @@ const updatedExamplePerson = pipe(
   O.prop('street'),
 ).set('Another street')(examplePerson);
 
-const firstTagLens = pipe(L.id<Person>(), L.prop('tags'), O.idx(0)).get(
-  examplePerson,
-);
+const firstTagLens = pipe(L.id<Person>(), L.prop('tags'), O.idx(0));
+firstTagLens.get(examplePerson);
 // developer
